@@ -44,7 +44,7 @@ export default function Footer() {
           <div className="h-56 sm:h-64 rounded-2xl overflow-hidden shadow-lg">
             <iframe
               title="ProEdge Learning Sirsi Location"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15600.0!2d74.8354!3d14.6195!3m2!1i1024!2i768!4f13.1!3m5!1s0x0%3A0x0!2zMTTCsDM3JzE1LjAiTiA3NMKwNDgnNTUuMCJF!3m2!1i1024!2i768!4f13.1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.623955801787!2d74.8353689!3d14.6194973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf1b1e9d8a3ef9%3A0x25db87c1e9c6a4b9!2sSimpi%20Galli%2C%20Sirsi%2C%20Karnataka%20581401!5e0!3m2!1sen!2sin!4v1731188740000!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
