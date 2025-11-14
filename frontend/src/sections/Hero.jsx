@@ -29,9 +29,9 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <Button onClick={() => setIsModalOpen(true)}>Get Started</Button>
 
-            <Link to="/courses">
+            {/* <Link to="/courses">
               <Button variant="secondary">View Courses</Button>
-            </Link>
+            </Link> */}
           </div>
         </div>
 

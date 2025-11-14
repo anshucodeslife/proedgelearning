@@ -11,7 +11,6 @@ export default function Enroll() {
             <h2 className="text-3xl lg:text-4xl font-extrabold">Enroll Today & Start Your Journey</h2>
             <p className="text-lg text-gray-800 mt-2">Build your future with ProEdge.</p>
           </div>
-          <Button variant="secondary" className="mt-8 md:mt-0">Get Started Now</Button>
         </div>
       </div>
     </div>
