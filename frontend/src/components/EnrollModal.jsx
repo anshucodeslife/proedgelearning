@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../config";
 
 export default function EnrollModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
     fullName: "",
@@ -14,7 +16,7 @@ export default function EnrollModal({ isOpen, onClose }) {
     school: "",
     board: "",
     subjects: "",
-    preferredCourses: [],
+    preferredCourses: [], // ARRAY
     otherCourse: "",
     batchTiming: "",
     emergencyName: "",
@@ -34,7 +36,7 @@ export default function EnrollModal({ isOpen, onClose }) {
   ];
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const toggleCourse = (course) => {
@@ -49,34 +51,59 @@ export default function EnrollModal({ isOpen, onClose }) {
     });
   };
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
 
-    // Reset form
-    setForm({
-      fullName: "",
-      dob: "",
-      gender: "",
-      contact: "",
-      email: "",
-      address: "",
-      educationLevel: "",
-      school: "",
-      board: "",
-      subjects: "",
-      preferredCourses: [],
-      otherCourse: "",
-      batchTiming: "",
-      emergencyName: "",
-      emergencyRelation: "",
-      emergencyPhone: "",
-    });
+    const payload = {
+      ...form,
+      preferredCourses: form.preferredCourses.join(", "), // convert array → string
+    };
 
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-    }, 1500);
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/students`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+
+        // Reset
+        setForm({
+          fullName: "",
+          dob: "",
+          gender: "",
+          contact: "",
+          email: "",
+          address: "",
+          educationLevel: "",
+          school: "",
+          board: "",
+          subjects: "",
+          preferredCourses: [],
+          otherCourse: "",
+          batchTiming: "",
+          emergencyName: "",
+          emergencyRelation: "",
+          emergencyPhone: "",
+        });
+
+        setTimeout(() => {
+          setSubmitted(false);
+          onClose();
+        }, 1500);
+      } else {
+        alert("Error: " + (data.details || data.error));
+      }
+    } catch (err) {
+      alert("Network error: " + err.message);
+    }
+
+    setLoading(false);
   };
 
   if (!isOpen) return null;
@@ -107,32 +134,74 @@ export default function EnrollModal({ isOpen, onClose }) {
             {/* Section 1 */}
             <h3 className="font-bold text-lg">Section 1: Personal Details</h3>
 
-            <input name="fullName" required placeholder="Full Name"
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              name="fullName"
+              value={form.fullName}
+              onChange={handleChange}
+              required
+              placeholder="Full Name"
+              className="w-full p-3 border rounded"
+            />
 
-            <input type="date" name="dob" required
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              type="date"
+              name="dob"
+              value={form.dob}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border rounded"
+            />
 
-            <select name="gender" required className="w-full p-3 border rounded" onChange={handleChange}>
+            <select
+              name="gender"
+              value={form.gender}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border rounded"
+            >
               <option value="">Select Gender</option>
               <option>Male</option>
               <option>Female</option>
               <option>Other</option>
             </select>
 
-            <input name="contact" placeholder="Contact Number" required
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              name="contact"
+              value={form.contact}
+              onChange={handleChange}
+              placeholder="Contact Number"
+              required
+              className="w-full p-3 border rounded"
+            />
 
-            <input name="email" type="email" placeholder="Email Address" required
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="Email Address"
+              required
+              className="w-full p-3 border rounded"
+            />
 
-            <textarea name="address" placeholder="Residential Address"
-              className="w-full p-3 border rounded" onChange={handleChange}></textarea>
+            <textarea
+              name="address"
+              value={form.address}
+              onChange={handleChange}
+              placeholder="Residential Address"
+              className="w-full p-3 border rounded"
+            ></textarea>
 
             {/* Section 2 */}
             <h3 className="font-bold text-lg">Section 2: Academic Background</h3>
 
-            <select name="educationLevel" required className="w-full p-3 border rounded" onChange={handleChange}>
+            <select
+              name="educationLevel"
+              value={form.educationLevel}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border rounded"
+            >
               <option value="">Current Education Level</option>
               <option>10th Grade</option>
               <option>12th Grade</option>
@@ -141,31 +210,62 @@ export default function EnrollModal({ isOpen, onClose }) {
               <option>Other</option>
             </select>
 
-            <input name="school" placeholder="School / College Name"
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              name="school"
+              value={form.school}
+              onChange={handleChange}
+              placeholder="School / College Name"
+              className="w-full p-3 border rounded"
+            />
 
-            <input name="board" placeholder="Board / University"
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              name="board"
+              value={form.board}
+              onChange={handleChange}
+              placeholder="Board / University"
+              className="w-full p-3 border rounded"
+            />
 
-            <input name="subjects" placeholder="Subjects of Interest"
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              name="subjects"
+              value={form.subjects}
+              onChange={handleChange}
+              placeholder="Subjects of Interest"
+              className="w-full p-3 border rounded"
+            />
 
-            {/* Section 3 - Courses */}
+            {/* Section 3 */}
             <h3 className="font-bold text-lg">Preferred Courses</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {courses.map((c) => (
                 <label key={c} className="text-sm">
-                  <input type="checkbox" onChange={() => toggleCourse(c)} /> {c}
+                  <input
+                    type="checkbox"
+                    checked={form.preferredCourses.includes(c)}
+                    onChange={() => toggleCourse(c)}
+                  />{" "}
+                  {c}
                 </label>
               ))}
             </div>
 
-            <input name="otherCourse" placeholder="Other Course (Optional)"
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              name="otherCourse"
+              value={form.otherCourse}
+              onChange={handleChange}
+              placeholder="Other Course (Optional)"
+              className="w-full p-3 border rounded"
+            />
 
-            {/* Batch Timing */}
-            <select name="batchTiming" required className="w-full p-3 border rounded" onChange={handleChange}>
+            {/* Batch */}
+            <select
+              name="batchTiming"
+              value={form.batchTiming}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border rounded"
+            >
               <option value="">Batch Timing Preference</option>
               <option>Morning</option>
               <option>Afternoon</option>
@@ -175,21 +275,40 @@ export default function EnrollModal({ isOpen, onClose }) {
             {/* Section 4 */}
             <h3 className="font-bold text-lg">Section 4: Emergency Contact</h3>
 
-            <input name="emergencyName" placeholder="Emergency Contact Name" required
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              name="emergencyName"
+              value={form.emergencyName}
+              onChange={handleChange}
+              placeholder="Emergency Contact Name"
+              required
+              className="w-full p-3 border rounded"
+            />
 
-            <input name="emergencyRelation" placeholder="Relationship" required
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              name="emergencyRelation"
+              value={form.emergencyRelation}
+              onChange={handleChange}
+              placeholder="Relationship"
+              required
+              className="w-full p-3 border rounded"
+            />
 
-            <input name="emergencyPhone" placeholder="Emergency Contact Number" required
-              className="w-full p-3 border rounded" onChange={handleChange} />
+            <input
+              name="emergencyPhone"
+              value={form.emergencyPhone}
+              onChange={handleChange}
+              placeholder="Emergency Contact Number"
+              required
+              className="w-full p-3 border rounded"
+            />
 
-            {/* Submit */}
-            <button type="submit"
-              className="w-full bg-[#fca532] text-white py-3 rounded-lg font-semibold hover:bg-orange-500 transition">
-              Submit
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#fca532] text-white py-3 rounded-lg font-semibold hover:bg-orange-500 transition"
+            >
+              {loading ? "Submitting..." : "Submit"}
             </button>
-
           </form>
         )}
       </div>

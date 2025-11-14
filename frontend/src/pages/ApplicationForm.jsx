@@ -24,7 +24,8 @@ export default function ApplicationForm() {
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
   };
 
   const submitForm = async (e) => {
@@ -41,7 +42,24 @@ export default function ApplicationForm() {
       const data = await res.json();
       if (data.success) {
         setSubmitted(true);
-        setForm({});
+        setForm({
+          fullName: "",
+          dob: "",
+          gender: "",
+          contact: "",
+          email: "",
+          address: "",
+          educationLevel: "",
+          school: "",
+          board: "",
+          subjects: "",
+          preferredCourses: "",
+          otherCourse: "",
+          batchTiming: "",
+          emergencyName: "",
+          emergencyRelation: "",
+          emergencyPhone: ""
+        });
       } else {
         alert("Error: " + (data.details || data.error));
       }
@@ -67,42 +85,42 @@ export default function ApplicationForm() {
         )}
 
         <form onSubmit={submitForm} className="space-y-4 bg-gray-50 p-8 rounded-xl shadow">
-          
-          <input name="fullName" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Full Name" required />
 
-          <input type="date" name="dob" onChange={handleChange} className="w-full p-3 border rounded" required />
+          <input name="fullName" value={form.fullName} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Full Name" required />
 
-          <select name="gender" onChange={handleChange} className="w-full p-3 border rounded" required>
+          <input type="date" name="dob" value={form.dob} onChange={handleChange} className="w-full p-3 border rounded" required />
+
+          <select name="gender" value={form.gender} onChange={handleChange} className="w-full p-3 border rounded" required>
             <option value="">Select Gender</option>
             <option>Male</option>
             <option>Female</option>
           </select>
 
-          <input name="contact" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Contact Number" required />
+          <input name="contact" value={form.contact} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Contact Number" required />
 
-          <input type="email" name="email" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Email" required />
+          <input type="email" name="email" value={form.email} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Email" required />
 
-          <input name="address" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Address" />
+          <input name="address" value={form.address} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Address" />
 
-          <input name="educationLevel" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Education Level" />
+          <input name="educationLevel" value={form.educationLevel} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Education Level" />
 
-          <input name="school" onChange={handleChange} className="w-full p-3 border rounded" placeholder="School" />
+          <input name="school" value={form.school} onChange={handleChange} className="w-full p-3 border rounded" placeholder="School" />
 
-          <input name="board" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Board" />
+          <input name="board" value={form.board} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Board" />
 
-          <input name="subjects" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Subjects" />
+          <input name="subjects" value={form.subjects} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Subjects" />
 
-          <input name="preferredCourses" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Preferred Courses" />
+          <input name="preferredCourses" value={form.preferredCourses} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Preferred Courses" />
 
-          <input name="otherCourse" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Other Course" />
+          <input name="otherCourse" value={form.otherCourse} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Other Course" />
 
-          <input name="batchTiming" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Batch Timing" />
+          <input name="batchTiming" value={form.batchTiming} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Batch Timing" />
 
-          <input name="emergencyName" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Emergency Name" />
+          <input name="emergencyName" value={form.emergencyName} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Emergency Name" />
 
-          <input name="emergencyRelation" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Emergency Relation" />
+          <input name="emergencyRelation" value={form.emergencyRelation} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Emergency Relation" />
 
-          <input name="emergencyPhone" onChange={handleChange} className="w-full p-3 border rounded" placeholder="Emergency Phone" />
+          <input name="emergencyPhone" value={form.emergencyPhone} onChange={handleChange} className="w-full p-3 border rounded" placeholder="Emergency Phone" />
 
           <button
             type="submit"
