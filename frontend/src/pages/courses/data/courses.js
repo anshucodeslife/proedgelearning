@@ -5,14 +5,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80",
     mrp: 3999,
     price: 2499,
-    description: "Foundational computer skills for beginners — OS navigation, file handling, typing, and basic apps.",
+    description:
+      "A beginner-friendly course designed to develop complete foundational computer confidence. You’ll learn how computers work, use operating systems, manage files, and operate essential applications like Word and PowerPoint. The training also covers typing, email usage, internet browsing, and basic troubleshooting. Perfect for students, job seekers, and adults new to computers.",
     points: [
-      "Computer fundamentals",
-      "File & folder management",
-      "Typing basics",
-      "Using Word & PowerPoint",
-      "Email and browsers",
-      "Basic troubleshooting"
+      "Understanding computer hardware & software",
+      "Operating system navigation (Windows basics)",
+      "File & folder organization",
+      "Typing practice & speed-building",
+      "MS Word basics",
+      "MS PowerPoint basics",
+      "Professional email usage",
+      "Internet browsing & online safety",
+      "Basic troubleshooting & maintenance"
     ]
   },
   {
@@ -21,16 +25,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
     mrp: 7999,
     price: 4999,
-    description: "A structured program designed to build strong foundational Excel skills.",
+    description:
+      "A complete beginner-level Excel program designed to build a strong working foundation. Learn to enter, clean, and format data using essential Excel tools. Understand formulas, charts, tables, and visualization basics. Ideal for students, working professionals, and freshers preparing for job roles requiring Excel proficiency.",
     points: [
-      "Introduction to Excel Interface",
-      "Data Entry & Formatting Techniques",
-      "Basic Formulas & Functions",
-      "Worksheet & Workbook Management",
-      "Charts & Basic Visualization",
-      "Tables & Formatting Styles",
-      "Basic Conditional Formatting",
-      "Print Page Setup & Document Handling"
+      "Excel interface & navigation",
+      "Data entry, cleaning & formatting",
+      "Basic formulas & functions",
+      "Cell referencing techniques",
+      "Worksheet & workbook management",
+      "Charts & basic visualizations",
+      "Tables & formatting styles",
+      "Conditional formatting basics",
+      "Print setup & file handling"
     ]
   },
   {
@@ -39,13 +45,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     mrp: 9999,
     price: 6999,
-    description: "Advanced Excel techniques: complex formulas, pivot tables, advanced charts and data modeling.",
+    description:
+      "An advanced Excel learning program focused on high-level analytics and reporting. Master complex formulas, pivot tables, data modeling techniques, and advanced charting. This course helps you optimize workflows and work efficiently with large datasets. Highly recommended for analysts and corporate professionals.",
     points: [
-      "Advanced formulas",
+      "Advanced formulas & nested functions",
       "Pivot Tables & Pivot Charts",
-      "What-if analysis",
-      "Advanced charting",
-      "Data validation & protection"
+      "What-if analysis (Goal Seek, Scenario Manager)",
+      "Advanced conditional formatting",
+      "Dynamic charting & dashboards",
+      "Data validation & protection",
+      "Importing & cleaning raw datasets",
+      "Power Query basics",
+      "Workbook optimization techniques"
     ]
   },
   {
@@ -54,12 +65,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
     mrp: 14999,
     price: 9999,
-    description: "Automate Excel tasks using VBA and macros to save hours of repetitive work.",
+    description:
+      "A specialized automation course that teaches scripting, macros, and custom Excel solutions using VBA. Learn to automate repetitive tasks, build user forms, and write logical automation scripts. This course is ideal for professionals who want to save time and build intelligent Excel tools.",
     points: [
-      "VBA fundamentals",
+      "VBA environment & fundamentals",
       "Recording & editing macros",
-      "User forms & controls",
-      "Automation patterns"
+      "Variables, loops & conditions",
+      "Worksheet & cell automation",
+      "UserForms & custom controls",
+      "Events & error handling",
+      "Reusable automation scripts",
+      "Real-world automation projects",
+      "Improving workflow efficiency"
     ]
   },
   {
@@ -68,12 +85,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
     mrp: 20999,
     price: 17999,
-    description: "Learn how to craft effective prompts for modern AI tools to get reliable, high-quality outputs.",
+    description:
+      "A practical, industry-ready course on writing effective prompts for tools like ChatGPT, Claude, Midjourney, and more. Learn structure, instruction design, contextual prompting, and evaluation techniques. Build skills needed for AI-powered productivity, content creation, automation, and professional workflows.",
     points: [
-      "Prompt fundamentals",
-      "Instruction design",
-      "Tool-specific patterns",
-      "Prompt evaluation"
+      "Prompt foundations & frameworks",
+      "Structured instruction design",
+      "Role-based prompting",
+      "Tool-specific prompt patterns",
+      "Creative & technical prompt writing",
+      "Prompt evaluation & refinement",
+      "Multi-step workflow automation",
+      "Dataset-assisted prompting",
+      "Real-world AI use cases"
     ]
   },
   {
@@ -82,12 +105,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=1200&q=80",
     mrp: 14999,
     price: 9999,
-    description: "SQL fundamentals for querying relational databases.",
+    description:
+      "A beginner-friendly SQL course covering all fundamentals needed to query relational databases. Learn to write clean and efficient queries using SELECT, WHERE, JOIN, and aggregation functions. Ideal for data analysts, backend developers, and students entering the tech domain.",
     points: [
-      "SELECT, WHERE, ORDER BY",
-      "Joins & Aggregations",
+      "Introduction to relational databases",
+      "SELECT, WHERE, ORDER BY basics",
+      "Sorting & filtering data",
+      "Joins & aggregations",
       "Group By & Having",
-      "Indexes & basic optimization"
+      "Basic data modeling concepts",
+      "Indexes & optimization basics",
+      "Subqueries introduction",
+      "Building real-world queries"
     ]
   },
   {
@@ -96,12 +125,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=800&q=80",
     mrp: 19999,
     price: 15999,
-    description: "Advanced SQL topics such as window functions, complex joins and query tuning.",
+    description:
+      "An advanced SQL course designed for complex data analysis, performance tuning, and enterprise-level querying. Master window functions, CTEs, advanced joins, and query optimization. Perfect for data engineers, senior analysts, and backend developers.",
     points: [
-      "Window functions",
-      "CTEs and subqueries",
-      "Query optimization",
-      "Advanced indexing"
+      "Window functions (RANK, ROW_NUMBER, etc.)",
+      "CTEs & advanced subqueries",
+      "Set operations & advanced joins",
+      "Query performance optimization",
+      "Advanced indexing strategies",
+      "Stored procedures & functions",
+      "Database normalization concepts",
+      "Using EXPLAIN for tuning",
+      "Working with large datasets"
     ]
   },
   {
@@ -110,12 +145,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&w=800&q=80",
     mrp: 20999,
     price: 12999,
-    description: "Power BI for building interactive dashboards and reporting pipelines.",
+    description:
+      "A complete Power BI training program focused on dashboard creation, data modeling, and business reporting. Learn to transform data, build visuals, write DAX, and publish interactive dashboards. Ideal for analytics and reporting professionals.",
     points: [
-      "Data modelling",
-      "DAX basics",
-      "Visualizations & dashboards",
-      "Sharing & governance"
+      "Power BI Desktop basics",
+      "Data import & transformation",
+      "Data modeling & relationships",
+      "DAX basics (CALCULATE, SUMX, etc.)",
+      "Interactive visualizations",
+      "Dashboard design & formatting",
+      "Publishing & sharing reports",
+      "Row-level security",
+      "Connecting multiple sources"
     ]
   },
   {
@@ -124,12 +165,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
     mrp: 20999,
     price: 17999,
-    description: "Automate workflows across apps and services using Power Automate.",
+    description:
+      "A practical automation course teaching how to build workflows across apps like Excel, SharePoint, Outlook, and more. Learn to automate repetitive processes, use triggers, integrate services, and manage business workflows effectively.",
     points: [
-      "Flows & connectors",
-      "Triggers & actions",
-      "Approval flows",
-      "Monitoring & debugging"
+      "Flows & connectors overview",
+      "Triggers, actions & conditions",
+      "Automated, instant & scheduled flows",
+      "Approval workflows",
+      "Excel, Outlook & Teams automations",
+      "Monitoring & debugging flows",
+      "Error handling techniques",
+      "Business process automation",
+      "Integration with third-party apps"
     ]
   },
   {
@@ -138,11 +185,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
     mrp: 45999,
     price: 39999,
-    description: "Complete Power Platform suite overview: Power Apps, Power Automate, Power BI.",
+    description:
+      "A complete enterprise-level program covering Power Apps, Power Automate, and Power BI. Learn how to build low-code apps, automate workflows, and create analytical dashboards. Ideal for organizations and professionals transitioning to digital automation.",
     points: [
-      "Power Apps basics",
-      "Platform integrations",
-      "Deployment patterns"
+      "Power Apps UI building",
+      "Form logic & data connections",
+      "Power Automate workflow creation",
+      "Power BI dashboard development",
+      "Dataverse fundamentals",
+      "Security & governance",
+      "Cross-platform integrations",
+      "App deployment methods",
+      "End-to-end enterprise workflow"
     ]
   },
   {
@@ -151,11 +205,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
     mrp: 12999,
     price: 9999,
-    description: "Financial planning & analysis for corporate decision-making.",
+    description:
+      "A professional FP&A training program that covers budgeting, forecasting, financial modeling, and business KPIs. Learn how companies plan finances, evaluate profitability, and make strategic decisions. Excellent for finance enthusiasts and corporate professionals.",
     points: [
-      "Budgeting & forecasting",
-      "Financial modelling",
-      "KPIs & dashboards"
+      "Budgeting & forecasting basics",
+      "Financial modeling structures",
+      "Profitability analysis",
+      "Working capital management",
+      "KPI dashboards & reporting",
+      "Variance analysis",
+      "Scenario & risk analysis",
+      "Corporate decision-making tools",
+      "Real corporate finance case studies"
     ]
   },
   {
@@ -164,11 +225,18 @@ const courses = [
     img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
     mrp: 15999,
     price: 12999,
-    description: "HRM fundamentals including recruitment, performance and policies.",
+    description:
+      "A complete HRM course covering recruitment, performance management, employee training, and compliance. Understand HR operations, policies, documentation, and people management strategies used in professional organizations.",
     points: [
-      "Recruitment lifecycle",
-      "Performance management",
-      "Labour policies & compliance"
+      "Recruitment & selection lifecycle",
+      "Job descriptions & candidate screening",
+      "Employee onboarding processes",
+      "Performance management systems",
+      "HR policies & labour compliance",
+      "Payroll basics & documentation",
+      "Employee engagement strategies",
+      "Conflict management & communication",
+      "Exit processes & formalities"
     ]
   }
 ];
