@@ -5,10 +5,36 @@ import pkg from 'pg';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
+import cors from "cors";
 
 const { Client } = pkg; // Extract Client from pg
 
+const ALLOWED_ORIGINS = [
+  "http://localhost:5173",
+  "https://proedgelearning.in",          // <-- your domain
+  "https://www.proedgelearning.in"       // if www enabled
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // allow mobile apps, curl, etc.
+
+    if (ALLOWED_ORIGINS.includes(origin)) {
+      return callback(null, true);
+    }
+
+    console.log("❌ BLOCKED ORIGIN:", origin);
+    return callback(new Error("Not allowed by CORS"));
+  },
+  credentials: true,           // allow cookies
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+
 const app = express();
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));   
 app.use(bodyParser.json());
 
 // Environment variables
