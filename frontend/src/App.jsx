@@ -88,7 +88,7 @@ export default function App() {
             <>
               <Header />
               <ApplicationForm />
-              <Footer />
+              {/* <Footer /> */}
             </>
           }
         />
