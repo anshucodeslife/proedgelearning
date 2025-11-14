@@ -5,13 +5,17 @@ import { API_BASE_URL } from "../config";
 const coursesList = [
   "Basic Computer Skills",
   "Excel Basic",
-  "Excel Advance",
-  "Excel VBA Scripting",
-  "SQL Basic",
+  "Excel Advanced",
+  "Excel + VBA Scripting",
+  "SQL Fundamentals",
   "SQL Advance",
   "Power BI",
-  "Power Apps",
+  "Power Automate",
+  "Power Platform",
+  "Finance Courses",
+  "HR Courses"
 ];
+
 
 function CloseIcon({ className = "w-6 h-6" }) {
   return (

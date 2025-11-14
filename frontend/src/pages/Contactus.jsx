@@ -48,18 +48,8 @@ const IconMail = ({ className = "w-5 h-5" }) => (
     stroke="currentColor"
     aria-hidden
   >
-    <path
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M3 8l9 6 9-6"
-    />
-    <path
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M21 8v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8"
-    />
+    <path d="M3 8l9 6 9-6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M21 8v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 const IconFacebook = ({ className = "w-5 h-5" }) => (
@@ -95,13 +85,13 @@ const IconInstagram = ({ className = "w-5 h-5" }) => (
 
 /* ------------------- ContactUs component ------------------- */
 export default function ContactUs() {
-  // form state (left column)
   const [form, setForm] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
+
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
@@ -115,10 +105,10 @@ export default function ContactUs() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Send via WhatsApp: builds message, opens wa.me link
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
     if (!form.name || !form.email || !form.message) {
       setError("Please fill required fields (name, email, message).");
       return;
@@ -127,7 +117,6 @@ export default function ContactUs() {
     setLoading(true);
 
     try {
-      // Build the message text with labels and line breaks
       const ending = "contact form - Proedge Learning Official Website";
       const lines = [
         `Name: ${form.name}`,
@@ -138,19 +127,15 @@ export default function ContactUs() {
         ending,
       ];
       const message = lines.join("\n");
-
-      // Encode and open WhatsApp click-to-chat
       const encoded = encodeURIComponent(message);
       const waUrl = `https://wa.me/${contact.whatsappNumber}?text=${encoded}`;
 
-      // Open in new tab/window (works on mobile & desktop)
       window.open(waUrl, "_blank");
 
-      // Optionally show success state in UI
       setSent(true);
       setForm({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setSent(false), 3000);
-    } catch (err) {
+    } catch {
       setError("Failed to open WhatsApp. Please try manually.");
     } finally {
       setLoading(false);
@@ -159,7 +144,6 @@ export default function ContactUs() {
 
   return (
     <main className="min-h-screen bg-neutral-900 text-gray-100">
-      {/* Hero */}
       <section className="py-16">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
@@ -171,7 +155,6 @@ export default function ContactUs() {
         </div>
       </section>
 
-      {/* Card container */}
       <section className="container mx-auto px-6 pb-20">
         <div className="bg-neutral-800 border border-neutral-700 rounded-2xl p-8 shadow-lg">
           <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>

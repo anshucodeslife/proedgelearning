@@ -5,21 +5,42 @@ import { API_BASE_URL } from "../config";
 const COURSES = [
   "Basic Computer Skills",
   "Excel Basic",
-  "Excel Advance",
-  "Excel VBA Scripting",
-  "SQL Basic",
+  "Excel Advanced",
+  "Excel + VBA Scripting",
+  "Prompt Engineering",
+  "SQL Fundamentals",
   "SQL Advance",
   "Power BI",
-  "Power Apps",
+  "Power Automate",
+  "Power Platform",
+  "Finance Courses",
+  "HR Courses",
 ];
 
 const normalizeDigits = (s = "") => String(s).replace(/\D/g, "");
 
 function Spinner({ className = "w-5 h-5 text-white" }) {
   return (
-    <svg className={`${className} animate-spin`} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeOpacity="0.25" />
-      <path d="M22 12a10 10 0 00-10-10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    <svg
+      className={`${className} animate-spin`}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeOpacity="0.25"
+      />
+      <path
+        d="M22 12a10 10 0 00-10-10"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -57,7 +78,9 @@ export default function ApplicationForm() {
       const exists = p.preferredCourses.includes(c);
       return {
         ...p,
-        preferredCourses: exists ? p.preferredCourses.filter((x) => x !== c) : [...p.preferredCourses, c],
+        preferredCourses: exists
+          ? p.preferredCourses.filter((x) => x !== c)
+          : [...p.preferredCourses, c],
       };
     });
 
@@ -68,22 +91,31 @@ export default function ApplicationForm() {
     if (!current.dob) e.dob = "Date of birth is required";
     if (!current.gender) e.gender = "Select gender";
     if (!current.contact?.trim()) e.contact = "Contact number required";
-    if (!/^\d{7,15}$/.test(normalizeDigits(current.contact))) e.contact = "Enter a valid phone number";
+    if (!/^\d{7,15}$/.test(normalizeDigits(current.contact)))
+      e.contact = "Enter a valid phone number";
     if (!current.email?.trim()) e.email = "Email required";
-    if (!/^\S+@\S+\.\S+$/.test(current.email || "")) e.email = "Enter a valid email";
+    if (!/^\S+@\S+\.\S+$/.test(current.email || ""))
+      e.email = "Enter a valid email";
     if (!current.educationLevel) e.educationLevel = "Education level required";
-    if (current.preferredCourses.length === 0 && !current.otherCourse?.trim()) e.preferredCourses = "Select at least one preferred course or add other";
+    if (current.preferredCourses.length === 0 && !current.otherCourse?.trim())
+      e.preferredCourses = "Select at least one preferred course or add other";
     if (!current.batchTiming) e.batchTiming = "Select a batch timing";
-    if (!current.emergencyName?.trim()) e.emergencyName = "Emergency contact name required";
-    if (!current.emergencyRelation?.trim()) e.emergencyRelation = "Relationship required";
-    if (!current.emergencyPhone?.trim()) e.emergencyPhone = "Emergency phone required";
-    if (!/^\d{7,15}$/.test(normalizeDigits(current.emergencyPhone || ""))) e.emergencyPhone = "Enter a valid phone number";
+    if (!current.emergencyName?.trim())
+      e.emergencyName = "Emergency contact name required";
+    if (!current.emergencyRelation?.trim())
+      e.emergencyRelation = "Relationship required";
+    if (!current.emergencyPhone?.trim())
+      e.emergencyPhone = "Emergency phone required";
+    if (!/^\d{7,15}$/.test(normalizeDigits(current.emergencyPhone || "")))
+      e.emergencyPhone = "Enter a valid phone number";
     if (
       normalizeDigits(current.contact) &&
       normalizeDigits(current.emergencyPhone) &&
-      normalizeDigits(current.contact) === normalizeDigits(current.emergencyPhone)
+      normalizeDigits(current.contact) ===
+        normalizeDigits(current.emergencyPhone)
     ) {
-      e.emergencyPhone = "Emergency phone must be different from contact number";
+      e.emergencyPhone =
+        "Emergency phone must be different from contact number";
     }
     return e;
   };
@@ -122,7 +154,7 @@ export default function ApplicationForm() {
       const rect = el.getBoundingClientRect();
       const containerRect = containerRef.current.getBoundingClientRect();
       // compute offset relative to container
-      const offsetTop = el.offsetTop - (containerRect.height * 0.12);
+      const offsetTop = el.offsetTop - containerRect.height * 0.12;
       containerRef.current.scrollTo({ top: offsetTop, behavior: "smooth" });
       // focus after small delay
       setTimeout(() => el.focus?.(), 250);
@@ -147,7 +179,9 @@ export default function ApplicationForm() {
 
     const payload = {
       ...form,
-      preferredCourses: Array.isArray(form.preferredCourses) ? form.preferredCourses.join(", ") : form.preferredCourses,
+      preferredCourses: Array.isArray(form.preferredCourses)
+        ? form.preferredCourses.join(", ")
+        : form.preferredCourses,
     };
 
     try {
@@ -198,7 +232,10 @@ export default function ApplicationForm() {
   // Ensure container scrolls to top when summary toggled closed/open for mobile so new content isn't off-screen
   useEffect(() => {
     // small delay so CSS transition can start and then we scroll to top for better UX
-    const t = setTimeout(() => containerRef.current?.scrollTo({ top: 0, behavior: "smooth" }), 160);
+    const t = setTimeout(
+      () => containerRef.current?.scrollTo({ top: 0, behavior: "smooth" }),
+      160
+    );
     return () => clearTimeout(t);
   }, [summaryOpen]);
 
@@ -226,7 +263,10 @@ export default function ApplicationForm() {
   // Mobile action bar (no draft buttons)
   const MobileActionBar = () => (
     <div className="fixed left-0 right-0 bottom-0 z-50 md:hidden bg-white/90 backdrop-blur border-t border-gray-200 p-3 flex items-center gap-3">
-      <button onClick={fillDemo} className="flex-1 px-4 py-3 rounded-md border text-sm bg-white hover:bg-gray-50">
+      <button
+        onClick={fillDemo}
+        className="flex-1 px-4 py-3 rounded-md border text-sm bg-white hover:bg-gray-50"
+      >
         Demo
       </button>
 
@@ -247,8 +287,12 @@ export default function ApplicationForm() {
         <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden">
           {/* Mobile header */}
           <div className="md:hidden px-5 pt-6 pb-4 border-b">
-            <h1 className="text-2xl font-extrabold text-[#0a214d]">Application Form</h1>
-            <p className="text-sm text-gray-500 mt-1">Register for a course — quick & mobile friendly.</p>
+            <h1 className="text-2xl font-extrabold text-[#0a214d]">
+              Application Form
+            </h1>
+            <p className="text-sm text-gray-500 mt-1">
+              Register for a course — quick & mobile friendly.
+            </p>
           </div>
 
           <div className="md:flex">
@@ -257,15 +301,24 @@ export default function ApplicationForm() {
               {/* Desktop header inside left column */}
               <div className="hidden md:flex items-start justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold text-[#0a214d]">Application Form</h2>
-                  <p className="text-sm text-gray-500 mt-1">Fill details below to register for courses.</p>
+                  <h2 className="text-2xl font-bold text-[#0a214d]">
+                    Application Form
+                  </h2>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Fill details below to register for courses.
+                  </p>
                 </div>
                 <div className="text-right">
                   <div className="text-xs text-gray-500">Progress</div>
                   <div className="mt-1 w-40 bg-gray-200 h-2 rounded-full overflow-hidden">
-                    <div className="h-2 bg-gradient-to-r from-[#7c4dff] to-[#fca532]" style={{ width: `${percentageComplete()}%` }} />
+                    <div
+                      className="h-2 bg-gradient-to-r from-[#7c4dff] to-[#fca532]"
+                      style={{ width: `${percentageComplete()}%` }}
+                    />
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">{percentageComplete()}% complete</div>
+                  <div className="text-xs text-gray-400 mt-1">
+                    {percentageComplete()}% complete
+                  </div>
                 </div>
               </div>
 
@@ -279,82 +332,124 @@ export default function ApplicationForm() {
                 <form onSubmit={submitForm} className="mt-4 space-y-4">
                   {/* Full name */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Full Name *</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Full Name *
+                    </label>
                     <input
                       name="fullName"
                       value={form.fullName}
                       onChange={(e) => update({ fullName: e.target.value })}
-                      className={`mt-1 w-full rounded-md p-3 border ${errors.fullName ? "border-red-400" : "border-gray-200"}`}
+                      className={`mt-1 w-full rounded-md p-3 border ${
+                        errors.fullName ? "border-red-400" : "border-gray-200"
+                      }`}
                       placeholder="Full Name"
                       autoComplete="name"
                     />
-                    {errors.fullName && <p className="text-xs text-red-500 mt-1">{errors.fullName}</p>}
+                    {errors.fullName && (
+                      <p className="text-xs text-red-500 mt-1">
+                        {errors.fullName}
+                      </p>
+                    )}
                   </div>
 
                   {/* DOB and gender */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Date of Birth *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Date of Birth *
+                      </label>
                       <input
                         name="dob"
                         type="date"
                         value={form.dob}
                         onChange={(e) => update({ dob: e.target.value })}
-                        className={`mt-1 w-full rounded-md p-3 border ${errors.dob ? "border-red-400" : "border-gray-200"}`}
+                        className={`mt-1 w-full rounded-md p-3 border ${
+                          errors.dob ? "border-red-400" : "border-gray-200"
+                        }`}
                       />
-                      {errors.dob && <p className="text-xs text-red-500 mt-1">{errors.dob}</p>}
+                      {errors.dob && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.dob}
+                        </p>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Gender *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Gender *
+                      </label>
                       <select
                         name="gender"
                         value={form.gender}
                         onChange={(e) => update({ gender: e.target.value })}
-                        className={`mt-1 w-full rounded-md p-3 border ${errors.gender ? "border-red-400" : "border-gray-200"}`}
+                        className={`mt-1 w-full rounded-md p-3 border ${
+                          errors.gender ? "border-red-400" : "border-gray-200"
+                        }`}
                       >
                         <option value="">Select Gender</option>
                         <option>Male</option>
                         <option>Female</option>
                         <option>Other</option>
                       </select>
-                      {errors.gender && <p className="text-xs text-red-500 mt-1">{errors.gender}</p>}
+                      {errors.gender && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.gender}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   {/* Contact / Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Contact Number *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Contact Number *
+                      </label>
                       <input
                         name="contact"
                         value={form.contact}
                         onChange={(e) => update({ contact: e.target.value })}
                         placeholder="+91 81234 56789"
-                        className={`mt-1 w-full rounded-md p-3 border ${errors.contact ? "border-red-400" : "border-gray-200"}`}
+                        className={`mt-1 w-full rounded-md p-3 border ${
+                          errors.contact ? "border-red-400" : "border-gray-200"
+                        }`}
                         inputMode="tel"
                       />
-                      {errors.contact && <p className="text-xs text-red-500 mt-1">{errors.contact}</p>}
+                      {errors.contact && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.contact}
+                        </p>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Email *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Email *
+                      </label>
                       <input
                         name="email"
                         type="email"
                         value={form.email}
                         onChange={(e) => update({ email: e.target.value })}
                         placeholder="you@example.com"
-                        className={`mt-1 w-full rounded-md p-3 border ${errors.email ? "border-red-400" : "border-gray-200"}`}
+                        className={`mt-1 w-full rounded-md p-3 border ${
+                          errors.email ? "border-red-400" : "border-gray-200"
+                        }`}
                         autoComplete="email"
                       />
-                      {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
+                      {errors.email && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.email}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   {/* Address */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Address</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Address
+                    </label>
                     <input
                       name="address"
                       value={form.address}
@@ -367,19 +462,33 @@ export default function ApplicationForm() {
                   {/* Education / School / Board */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Education Level *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Education Level *
+                      </label>
                       <input
                         name="educationLevel"
                         value={form.educationLevel}
-                        onChange={(e) => update({ educationLevel: e.target.value })}
+                        onChange={(e) =>
+                          update({ educationLevel: e.target.value })
+                        }
                         placeholder="e.g. Undergraduate"
-                        className={`mt-1 w-full rounded-md p-3 border ${errors.educationLevel ? "border-red-400" : "border-gray-200"}`}
+                        className={`mt-1 w-full rounded-md p-3 border ${
+                          errors.educationLevel
+                            ? "border-red-400"
+                            : "border-gray-200"
+                        }`}
                       />
-                      {errors.educationLevel && <p className="text-xs text-red-500 mt-1">{errors.educationLevel}</p>}
+                      {errors.educationLevel && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.educationLevel}
+                        </p>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">School / College</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        School / College
+                      </label>
                       <input
                         name="school"
                         value={form.school}
@@ -390,7 +499,9 @@ export default function ApplicationForm() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Board / University</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Board / University
+                      </label>
                       <input
                         name="board"
                         value={form.board}
@@ -402,7 +513,9 @@ export default function ApplicationForm() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Subjects (optional)</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Subjects (optional)
+                    </label>
                     <input
                       name="subjects"
                       value={form.subjects}
@@ -415,7 +528,9 @@ export default function ApplicationForm() {
                   {/* Preferred courses */}
                   <div>
                     <div className="flex items-center justify-between">
-                      <label className="block text-sm font-medium text-gray-700">Preferred Courses *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Preferred Courses *
+                      </label>
                       <div className="text-xs text-gray-400">Tap to select</div>
                     </div>
 
@@ -427,7 +542,11 @@ export default function ApplicationForm() {
                             key={c}
                             type="button"
                             onClick={() => toggleCourse(c)}
-                            className={`px-3 py-2 rounded-md text-sm border ${active ? "bg-[#fca532] text-white border-[#fca532]" : "bg-white text-gray-700 border-gray-200"} transition`}
+                            className={`px-3 py-2 rounded-md text-sm border ${
+                              active
+                                ? "bg-[#fca532] text-white border-[#fca532]"
+                                : "bg-white text-gray-700 border-gray-200"
+                            } transition`}
                           >
                             {c}
                           </button>
@@ -439,29 +558,47 @@ export default function ApplicationForm() {
                       <input
                         name="otherCourse"
                         value={form.otherCourse}
-                        onChange={(e) => update({ otherCourse: e.target.value })}
+                        onChange={(e) =>
+                          update({ otherCourse: e.target.value })
+                        }
                         placeholder="Other course (optional)"
                         className="mt-1 w-full rounded-md p-3 border border-gray-200"
                       />
-                      {errors.preferredCourses && <p className="text-xs text-red-500 mt-1">{errors.preferredCourses}</p>}
+                      {errors.preferredCourses && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.preferredCourses}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Batch Timing *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Batch Timing *
+                      </label>
                       <select
                         name="batchTiming"
                         value={form.batchTiming}
-                        onChange={(e) => update({ batchTiming: e.target.value })}
-                        className={`mt-1 w-full rounded-md p-3 border ${errors.batchTiming ? "border-red-400" : "border-gray-200"}`}
+                        onChange={(e) =>
+                          update({ batchTiming: e.target.value })
+                        }
+                        className={`mt-1 w-full rounded-md p-3 border ${
+                          errors.batchTiming
+                            ? "border-red-400"
+                            : "border-gray-200"
+                        }`}
                       >
                         <option value="">Select</option>
                         <option>Morning</option>
                         <option>Afternoon</option>
                         <option>Evening</option>
                       </select>
-                      {errors.batchTiming && <p className="text-xs text-red-500 mt-1">{errors.batchTiming}</p>}
+                      {errors.batchTiming && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.batchTiming}
+                        </p>
+                      )}
                     </div>
 
                     <div />
@@ -470,61 +607,122 @@ export default function ApplicationForm() {
                   {/* Emergency */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Emergency Contact Name *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Emergency Contact Name *
+                      </label>
                       <input
                         name="emergencyName"
                         value={form.emergencyName}
-                        onChange={(e) => update({ emergencyName: e.target.value })}
+                        onChange={(e) =>
+                          update({ emergencyName: e.target.value })
+                        }
                         placeholder="Emergency name"
-                        className={`mt-1 w-full rounded-md p-3 border ${errors.emergencyName ? "border-red-400" : "border-gray-200"}`}
+                        className={`mt-1 w-full rounded-md p-3 border ${
+                          errors.emergencyName
+                            ? "border-red-400"
+                            : "border-gray-200"
+                        }`}
                       />
-                      {errors.emergencyName && <p className="text-xs text-red-500 mt-1">{errors.emergencyName}</p>}
+                      {errors.emergencyName && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.emergencyName}
+                        </p>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Relation *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Relation *
+                      </label>
                       <input
                         name="emergencyRelation"
                         value={form.emergencyRelation}
-                        onChange={(e) => update({ emergencyRelation: e.target.value })}
+                        onChange={(e) =>
+                          update({ emergencyRelation: e.target.value })
+                        }
                         placeholder="e.g. Parent, Sibling"
-                        className={`mt-1 w-full rounded-md p-3 border ${errors.emergencyRelation ? "border-red-400" : "border-gray-200"}`}
+                        className={`mt-1 w-full rounded-md p-3 border ${
+                          errors.emergencyRelation
+                            ? "border-red-400"
+                            : "border-gray-200"
+                        }`}
                       />
-                      {errors.emergencyRelation && <p className="text-xs text-red-500 mt-1">{errors.emergencyRelation}</p>}
+                      {errors.emergencyRelation && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.emergencyRelation}
+                        </p>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Emergency Phone *</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Emergency Phone *
+                      </label>
                       <input
                         name="emergencyPhone"
                         value={form.emergencyPhone}
-                        onChange={(e) => update({ emergencyPhone: e.target.value })}
+                        onChange={(e) =>
+                          update({ emergencyPhone: e.target.value })
+                        }
                         placeholder="+91 9xx xxx xxxx"
-                        className={`mt-1 w-full rounded-md p-3 border ${errors.emergencyPhone ? "border-red-400" : "border-gray-200"}`}
+                        className={`mt-1 w-full rounded-md p-3 border ${
+                          errors.emergencyPhone
+                            ? "border-red-400"
+                            : "border-gray-200"
+                        }`}
                         inputMode="tel"
                       />
-                      {errors.emergencyPhone && <p className="text-xs text-red-500 mt-1">{errors.emergencyPhone}</p>}
+                      {errors.emergencyPhone && (
+                        <p className="text-xs text-red-500 mt-1">
+                          {errors.emergencyPhone}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   {/* Desktop actions */}
                   <div className="hidden md:flex items-center justify-between gap-4 mt-4">
                     <div className="flex items-center gap-2">
-                      <button type="button" onClick={fillDemo} className="px-4 py-2 rounded-md border text-sm bg-white hover:bg-gray-50">Fill demo</button>
+                      <button
+                        type="button"
+                        onClick={fillDemo}
+                        className="px-4 py-2 rounded-md border text-sm bg-white hover:bg-gray-50"
+                      >
+                        Fill demo
+                      </button>
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <button type="button" onClick={() => { containerRef.current?.scrollTo({ top: 0, behavior: "smooth" }); }} className="px-4 py-2 rounded-md border text-sm bg-white hover:bg-gray-50">Top</button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          containerRef.current?.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                          });
+                        }}
+                        className="px-4 py-2 rounded-md border text-sm bg-white hover:bg-gray-50"
+                      >
+                        Top
+                      </button>
 
-                      <button type="submit" disabled={loading} className="px-6 py-3 rounded-md bg-gradient-to-r from-[#7c4dff] to-[#fca532] text-white font-semibold inline-flex items-center gap-2">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="px-6 py-3 rounded-md bg-gradient-to-r from-[#7c4dff] to-[#fca532] text-white font-semibold inline-flex items-center gap-2"
+                      >
                         {loading ? <Spinner /> : null}
-                        <span>{loading ? "Submitting..." : "Submit Application"}</span>
+                        <span>
+                          {loading ? "Submitting..." : "Submit Application"}
+                        </span>
                       </button>
                     </div>
                   </div>
 
                   {/* small footer note on mobile */}
-                  <div className="md:hidden text-xs text-gray-500 text-center mt-2 mb-20">We will contact you within 24 - 48 hours.</div>
+                  <div className="md:hidden text-xs text-gray-500 text-center mt-2 mb-20">
+                    We will contact you within 24 - 48 hours.
+                  </div>
                 </form>
               </div>
             </div>
@@ -533,8 +731,12 @@ export default function ApplicationForm() {
             <aside className="w-full md:w-1/3 bg-[#f8fafc] border-t md:border-t-0 md:border-l p-4 md:p-6">
               <div className="flex items-center justify-between md:block">
                 <div className="flex items-center gap-3">
-                  <h3 className="text-lg font-semibold text-[#0a214d]">Live Summary</h3>
-                  <div className="hidden md:inline text-sm text-gray-500 ml-2">{percentageComplete()}% complete</div>
+                  <h3 className="text-lg font-semibold text-[#0a214d]">
+                    Live Summary
+                  </h3>
+                  <div className="hidden md:inline text-sm text-gray-500 ml-2">
+                    {percentageComplete()}% complete
+                  </div>
                 </div>
 
                 <button
@@ -547,42 +749,141 @@ export default function ApplicationForm() {
                 </button>
               </div>
 
-              <div className={`mt-3 transition-all ${summaryOpen ? "max-h-[999px] opacity-100" : "max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100"}`}>
+              <div
+                className={`mt-3 transition-all ${
+                  summaryOpen
+                    ? "max-h-[999px] opacity-100"
+                    : "max-h-0 opacity-0 overflow-hidden md:max-h-none md:opacity-100"
+                }`}
+              >
                 <div className="space-y-3 text-sm text-gray-700">
-                  <div><strong>Name:</strong> {form.fullName || "—"}</div>
-                  <div><strong>DOB:</strong> {form.dob || "—"}</div>
-                  <div><strong>Email:</strong> {form.email || "—"}</div>
-                  <div><strong>Contact:</strong> {form.contact || "—"}</div>
-                  <div><strong>Education:</strong> {form.educationLevel || "—"}</div>
-                  <div><strong>Courses:</strong> {form.preferredCourses.length ? form.preferredCourses.join(", ") : (form.otherCourse || "—")}</div>
-                  <div><strong>Batch:</strong> {form.batchTiming || "—"}</div>
-                  <div className="mt-2"><strong>Emergency:</strong> <div className="text-sm text-gray-600">{form.emergencyName ? `${form.emergencyName} (${form.emergencyRelation}) - ${form.emergencyPhone}` : "—"}</div></div>
+                  <div>
+                    <strong>Name:</strong> {form.fullName || "—"}
+                  </div>
+                  <div>
+                    <strong>DOB:</strong> {form.dob || "—"}
+                  </div>
+                  <div>
+                    <strong>Email:</strong> {form.email || "—"}
+                  </div>
+                  <div>
+                    <strong>Contact:</strong> {form.contact || "—"}
+                  </div>
+                  <div>
+                    <strong>Education:</strong> {form.educationLevel || "—"}
+                  </div>
+                  <div>
+                    <strong>Courses:</strong>{" "}
+                    {form.preferredCourses.length
+                      ? form.preferredCourses.join(", ")
+                      : form.otherCourse || "—"}
+                  </div>
+                  <div>
+                    <strong>Batch:</strong> {form.batchTiming || "—"}
+                  </div>
+                  <div className="mt-2">
+                    <strong>Emergency:</strong>{" "}
+                    <div className="text-sm text-gray-600">
+                      {form.emergencyName
+                        ? `${form.emergencyName} (${form.emergencyRelation}) - ${form.emergencyPhone}`
+                        : "—"}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="mt-5">
-                  <h4 className="text-sm font-medium text-gray-700 mb-2">Contact & Social</h4>
-                  <div className="text-sm text-gray-600">Phone: <a href="tel:+918105751886" className="text-[#0a214d] hover:underline">+91 81057 51886</a></div>
-                  <div className="text-sm text-gray-600 mt-1">Email: <a href="mailto:proedgelearningofficial@gmail.com" className="text-[#0a214d] hover:underline">proedgelearningofficial@gmail.com</a></div>
-
-                  <div className="flex items-center gap-3 mt-4">
-                    <a href="https://wa.me/918105751886" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white border hover:bg-gray-50" aria-label="WhatsApp">
-                      <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 1012 23c1.9 0 3.7-.5 5.3-1.4l3 1-1-3A10.9 10.9 0 0021 12 10.9 10.9 0 0020.5 3.5zM12 20a8 8 0 118-8 8 8 0 01-8 8z"/><path d="M17 14.1c-.3-.2-1.8-.9-2-.9s-.4-.1-.6.2-.7.9-.9 1.1c-.2.3-.4.3-.7.1-2-.9-3.6-3.5-3.9-4-.1-.2.1-.3.3-.6.1-.2.1-.4 0-.6-.1-.2-.6-1.4-.8-1.8-.2-.4-.4-.3-.6-.3-.2 0-.4 0-.6 0-.2 0-.5.1-.7.3-.4.3-1.2 1.2-1.2 3 0 1.8 1.5 3.8 1.7 4 .2.1 3 4.6 7.8 5.1 0 0 .6.1 1.2.1.6 0 1-.5 1.2-.9.2-.3 1.2-2 1.4-2.3.1-.2.1-.4.1-.6 0-.2-.2-.3-.4-.5z"/></svg>
+                  <h4 className="text-sm font-medium text-gray-700 mb-2">
+                    Contact & Social
+                  </h4>
+                  <div className="text-sm text-gray-600">
+                    Phone:{" "}
+                    <a
+                      href="tel:+918105751886"
+                      className="text-[#0a214d] hover:underline"
+                    >
+                      +91 81057 51886
                     </a>
-
-                    <a href="https://www.youtube.com/@ProEdgeLearning" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white border hover:bg-gray-50" aria-label="YouTube">
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.6-.9-2-1-2.8-.2-7-.2-7-.2s-4.2 0-7 .2c-.5 0-1.3.1-2 .9-.6.7-.8 2.4-.8 2.4S3.5 8 3.5 9.8v1.4c0 1.8.4 3.6.4 3.6s.2 1.7.8 2.4c.7.8 1.7.8 2.1.9 1.6.1 6.8.2 6.8.2s4.2 0 7-.2c.5 0 1.3-.1 2-.9.6-.7.8-2.4.8-2.4s.4-1.8.4-3.6V9.8c0-1.8-.4-3.6-.4-3.6zM9.9 14.6V8.4l5.2 3.1-5.2 3.1z"/></svg>
-                    </a>
-
-                    <a href="https://x.com/ProEdgeLearning" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white border hover:bg-gray-50" aria-label="X">
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.3 5.71a1 1 0 00-1.41 0L12 10.59 7.11 5.7A1 1 0 1 0 5.7 7.11L10.59 12l-4.9 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.9a1 1 0 0 0 1.41-1.41L13.41 12l4.9-4.89a1 1 0 0 0 0-1.4z"/></svg>
-                    </a>
-
-                    <a href="https://www.instagram.com/theproedgelearning/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white border hover:bg-gray-50" aria-label="Instagram">
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 6.2A3 3 0 108 11a3 3 0 004 0zm4.8-3.1a.9.9 0 11-1.8 0 .9.9 0 011.8 0z"/></svg>
+                  </div>
+                  <div className="text-sm text-gray-600 mt-1">
+                    Email:{" "}
+                    <a
+                      href="mailto:proedgelearningofficial@gmail.com"
+                      className="text-[#0a214d] hover:underline"
+                    >
+                      proedgelearningofficial@gmail.com
                     </a>
                   </div>
 
-                  <div className="mt-4 text-xs text-gray-500">We will contact you within 24 - 48 hours.</div>
+                  <div className="flex items-center gap-3 mt-4">
+                    <a
+                      href="https://wa.me/918105751886"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-white border hover:bg-gray-50"
+                      aria-label="WhatsApp"
+                    >
+                      <svg
+                        className="w-5 h-5 text-green-600"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M20.5 3.5A11 11 0 1012 23c1.9 0 3.7-.5 5.3-1.4l3 1-1-3A10.9 10.9 0 0021 12 10.9 10.9 0 0020.5 3.5zM12 20a8 8 0 118-8 8 8 0 01-8 8z" />
+                        <path d="M17 14.1c-.3-.2-1.8-.9-2-.9s-.4-.1-.6.2-.7.9-.9 1.1c-.2.3-.4.3-.7.1-2-.9-3.6-3.5-3.9-4-.1-.2.1-.3.3-.6.1-.2.1-.4 0-.6-.1-.2-.6-1.4-.8-1.8-.2-.4-.4-.3-.6-.3-.2 0-.4 0-.6 0-.2 0-.5.1-.7.3-.4.3-1.2 1.2-1.2 3 0 1.8 1.5 3.8 1.7 4 .2.1 3 4.6 7.8 5.1 0 0 .6.1 1.2.1.6 0 1-.5 1.2-.9.2-.3 1.2-2 1.4-2.3.1-.2.1-.4.1-.6 0-.2-.2-.3-.4-.5z" />
+                      </svg>
+                    </a>
+
+                    <a
+                      href="https://www.youtube.com/@ProEdgeLearning"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-white border hover:bg-gray-50"
+                      aria-label="YouTube"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.6-.9-2-1-2.8-.2-7-.2-7-.2s-4.2 0-7 .2c-.5 0-1.3.1-2 .9-.6.7-.8 2.4-.8 2.4S3.5 8 3.5 9.8v1.4c0 1.8.4 3.6.4 3.6s.2 1.7.8 2.4c.7.8 1.7.8 2.1.9 1.6.1 6.8.2 6.8.2s4.2 0 7-.2c.5 0 1.3-.1 2-.9.6-.7.8-2.4.8-2.4s.4-1.8.4-3.6V9.8c0-1.8-.4-3.6-.4-3.6zM9.9 14.6V8.4l5.2 3.1-5.2 3.1z" />
+                      </svg>
+                    </a>
+
+                    <a
+                      href="https://x.com/ProEdgeLearning"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-white border hover:bg-gray-50"
+                      aria-label="X"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M18.3 5.71a1 1 0 00-1.41 0L12 10.59 7.11 5.7A1 1 0 1 0 5.7 7.11L10.59 12l-4.9 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.9a1 1 0 0 0 1.41-1.41L13.41 12l4.9-4.89a1 1 0 0 0 0-1.4z" />
+                      </svg>
+                    </a>
+
+                    <a
+                      href="https://www.instagram.com/theproedgelearning/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-white border hover:bg-gray-50"
+                      aria-label="Instagram"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 6.2A3 3 0 108 11a3 3 0 004 0zm4.8-3.1a.9.9 0 11-1.8 0 .9.9 0 011.8 0z" />
+                      </svg>
+                    </a>
+                  </div>
+
+                  <div className="mt-4 text-xs text-gray-500">
+                    We will contact you within 24 - 48 hours.
+                  </div>
                 </div>
               </div>
             </aside>
