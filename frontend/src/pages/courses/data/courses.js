@@ -2,11 +2,11 @@ const courses = [
   {
     title: "Basic Computer Skills",
     slug: "BasicComputer",
-    img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&h=1080&fit=crop",
     mrp: 3999,
     price: 2499,
     description:
-      "A beginner-friendly course designed to develop complete foundational computer confidence. You’ll learn how computers work, use operating systems, manage files, and operate essential applications like Word and PowerPoint. The training also covers typing, email usage, internet browsing, and basic troubleshooting. Perfect for students, job seekers, and adults new to computers.",
+      "A beginner-friendly course designed to develop complete foundational computer confidence. You'll learn how computers work, use operating systems, manage files, and operate essential applications like Word and PowerPoint. The training also covers typing, email usage, internet browsing, and basic troubleshooting. Perfect for students, job seekers, and adults new to computers.",
     points: [
       "Understanding computer hardware & software",
       "Operating system navigation (Windows basics)",
@@ -16,13 +16,13 @@ const courses = [
       "MS PowerPoint basics",
       "Professional email usage",
       "Internet browsing & online safety",
-      "Basic troubleshooting & maintenance"
-    ]
+      "Basic troubleshooting & maintenance",
+    ],
   },
   {
     title: "Excel Basic",
     slug: "ExcelBasic",
-    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop",
     mrp: 7999,
     price: 4999,
     description:
@@ -36,13 +36,13 @@ const courses = [
       "Charts & basic visualizations",
       "Tables & formatting styles",
       "Conditional formatting basics",
-      "Print setup & file handling"
-    ]
+      "Print setup & file handling",
+    ],
   },
   {
     title: "Excel Advanced",
     slug: "ExcelAdvanced",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop",
     mrp: 9999,
     price: 6999,
     description:
@@ -56,13 +56,13 @@ const courses = [
       "Data validation & protection",
       "Importing & cleaning raw datasets",
       "Power Query basics",
-      "Workbook optimization techniques"
-    ]
+      "Workbook optimization techniques",
+    ],
   },
   {
     title: "Excel + VBA Scripting",
     slug: "ExcelVBA",
-    img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop",
     mrp: 14999,
     price: 9999,
     description:
@@ -76,13 +76,13 @@ const courses = [
       "Events & error handling",
       "Reusable automation scripts",
       "Real-world automation projects",
-      "Improving workflow efficiency"
-    ]
+      "Improving workflow efficiency",
+    ],
   },
   {
     title: "Prompt Engineering with AI Tools",
     slug: "PromptEngineering",
-    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&h=1080&fit=crop",
     mrp: 20999,
     price: 17999,
     description:
@@ -96,13 +96,13 @@ const courses = [
       "Prompt evaluation & refinement",
       "Multi-step workflow automation",
       "Dataset-assisted prompting",
-      "Real-world AI use cases"
-    ]
+      "Real-world AI use cases",
+    ],
   },
   {
     title: "SQL Basic",
     slug: "SQLBasic",
-    img: "https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1920&h=1080&fit=crop",
     mrp: 14999,
     price: 9999,
     description:
@@ -116,13 +116,13 @@ const courses = [
       "Basic data modeling concepts",
       "Indexes & optimization basics",
       "Subqueries introduction",
-      "Building real-world queries"
-    ]
+      "Building real-world queries",
+    ],
   },
   {
     title: "SQL Advanced",
     slug: "SQLAdvanced",
-    img: "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop",
     mrp: 19999,
     price: 15999,
     description:
@@ -136,13 +136,13 @@ const courses = [
       "Stored procedures & functions",
       "Database normalization concepts",
       "Using EXPLAIN for tuning",
-      "Working with large datasets"
-    ]
+      "Working with large datasets",
+    ],
   },
   {
     title: "Power BI",
     slug: "PowerBI",
-    img: "https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop",
     mrp: 20999,
     price: 12999,
     description:
@@ -156,13 +156,13 @@ const courses = [
       "Dashboard design & formatting",
       "Publishing & sharing reports",
       "Row-level security",
-      "Connecting multiple sources"
-    ]
+      "Connecting multiple sources",
+    ],
   },
   {
     title: "Power Automate",
     slug: "PowerAutomate",
-    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1920&h=1080&fit=crop",
     mrp: 20999,
     price: 17999,
     description:
@@ -176,13 +176,13 @@ const courses = [
       "Monitoring & debugging flows",
       "Error handling techniques",
       "Business process automation",
-      "Integration with third-party apps"
-    ]
+      "Integration with third-party apps",
+    ],
   },
   {
     title: "Power Platform",
     slug: "PowerPlatform",
-    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop",
     mrp: 45999,
     price: 39999,
     description:
@@ -196,13 +196,13 @@ const courses = [
       "Security & governance",
       "Cross-platform integrations",
       "App deployment methods",
-      "End-to-end enterprise workflow"
-    ]
+      "End-to-end enterprise workflow",
+    ],
   },
   {
     title: "Corporate Financial Planning",
     slug: "FinancialPlanning",
-    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&h=1080&fit=crop",
     mrp: 12999,
     price: 9999,
     description:
@@ -216,13 +216,13 @@ const courses = [
       "Variance analysis",
       "Scenario & risk analysis",
       "Corporate decision-making tools",
-      "Real corporate finance case studies"
-    ]
+      "Real corporate finance case studies",
+    ],
   },
   {
     title: "Human Resource Management",
     slug: "HumanResource",
-    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&h=1080&fit=crop",
     mrp: 15999,
     price: 12999,
     description:
@@ -236,9 +236,9 @@ const courses = [
       "Payroll basics & documentation",
       "Employee engagement strategies",
       "Conflict management & communication",
-      "Exit processes & formalities"
-    ]
-  }
+      "Exit processes & formalities",
+    ],
+  },
 ];
 
 export default courses;

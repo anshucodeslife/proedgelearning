@@ -5,11 +5,19 @@ import { CheckCircleIcon } from "../components/icons/Icons"
 
 export default function EducationSystem() {
   const images = [
-    "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&h=300&fit=crop"
-  ];
+  // Expert-led Guidance / Teaching
+  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&h=1080&fit=crop",
+  
+  // Real-world Projects / Collaboration
+    "https://images.unsplash.com/photo-1513258496099-48168024aec0?w=1920&h=1080&fit=crop",
+  
+  // AI & Future-Ready Skills / Technology
+  "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1920&h=1080&fit=crop",
+  
+  // Smart Classes / Modern Learning
+  "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&h=1080&fit=crop",
+  
+];
 
   return (
     <div className="py-24 bg-white">

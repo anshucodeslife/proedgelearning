@@ -6,89 +6,88 @@ export default function Courses() {
   const courses = [
     {
       title: "Basic Computer Skills",
-      img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80",
+      img: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&h=1080&fit=crop", // Laptop and workspace
       link: "/course/basic-computer",
       mrp: 3999,
       price: 2499,
     },
     {
       title: "Excel Basic",
-      img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop", // Data analytics/spreadsheet work
       link: "/course/excel-basic",
       mrp: 7999,
       price: 4999,
     },
     {
       title: "Excel Advanced",
-      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop", // Charts and data visualization
       link: "/course/excel-advanced",
       mrp: 9999,
       price: 6999,
     },
     {
       title: "Excel + VBA Scripting",
-      img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop", // Code on screen/programming
       link: "/course/excel-vba",
       mrp: 14999,
       price: 9999,
     },
-     {
+    {
       title: "Prompt Engineering with AI Tools",
-      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&h=1080&fit=crop", // AI/ChatGPT interface
       link: "/course/prompt-engineering",
       mrp: 20999,
       price: 17999,
     },
     {
       title: "SQL Basic",
-      img: "https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=1200&q=80",
+      img: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1920&h=1080&fit=crop", // Database/server concept
       link: "/course/sql-basic",
       mrp: 14999,
       price: 9999,
     },
     {
       title: "SQL Advanced",
-      img: "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop", // Database code/queries
       link: "/course/sql-advanced",
       mrp: 19999,
       price: 15999,
     },
     {
       title: "Power BI",
-      img: "https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop", // Business analytics dashboard
       link: "/course/powerbi",
       mrp: 20999,
       price: 12999,
     },
     {
       title: "Power Automate",
-      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1920&h=1080&fit=crop", // Automation/workflow concept
       link: "/course/power-automate",
       mrp: 20999,
       price: 17999,
     },
     {
       title: "Power Platform",
-      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop", // Business platform/apps
       link: "/course/power-platform",
       mrp: 45999,
       price: 39999,
     },
     {
       title: "Corporate Financial Planning",
-      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&h=1080&fit=crop", // Financial charts/calculator
       link: "/course/financial-planning",
       mrp: 12999,
       price: 9999,
     },
     {
       title: "Human Resource Management",
-      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&h=1080&fit=crop", // Team/HR meeting
       link: "/course/human-resource",
       mrp: 15999,
       price: 12999,
     },
-   
   ];
 
   return (
