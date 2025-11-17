@@ -28,6 +28,7 @@ import PowerPlatform from "./pages/courses/PowerPlatform";
 import PromptEngineering from "./pages/courses/PromptEngineering";
 import FinancialPlanning from "./pages/courses/FinancialPlanning";
 import HumanResource from "./pages/courses/HumanResource";
+import InternshipPage from "./pages/InternshipPage";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -85,6 +86,16 @@ export default function App() {
             <>
               <Header />
               <CoursesPage />
+              <Footer />
+            </>
+          }
+        />
+          <Route
+          path="/internship"
+          element={
+            <>
+              {/* <Header /> */}
+              <InternshipPage />
               <Footer />
             </>
           }
