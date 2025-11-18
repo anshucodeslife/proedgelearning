@@ -239,6 +239,26 @@ const courses = [
       "Exit processes & formalities",
     ],
   },
+  {
+    title: "Power Apps",
+    slug: "PowerApps",
+    img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1920&h=1080&fit=crop",
+    mrp: 25999,
+    price: 19999,
+    description:
+      "Master Microsoft Power Apps to build custom business applications without traditional coding. Learn canvas apps, model-driven apps, data integration, and app deployment. Create professional solutions for automation and digital transformation.",
+    points: [
+      "Canvas apps from scratch",
+      "Model-driven app development",
+      "Dataverse integration & tables",
+      "Forms, galleries & controls",
+      "Power Fx formulas & expressions",
+      "Data connections & APIs",
+      "App deployment & sharing",
+      "Mobile responsive design",
+      "Best practices & optimization",
+    ],
+  },
 ];
 
 export default courses;

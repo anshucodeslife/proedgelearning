@@ -88,6 +88,13 @@ export default function Courses() {
       mrp: 15999,
       price: 12999,
     },
+    {
+      title: "Power Apps",
+      img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1920&h=1080&fit=crop", // Dashboard/analytics visualization
+      link: "/course/power-apps",
+      mrp: 25999,
+      price: 19999,
+    },
   ];
 
   return (

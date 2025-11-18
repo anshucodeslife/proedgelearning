@@ -28,6 +28,7 @@ import PowerPlatform from "./pages/courses/PowerPlatform";
 import PromptEngineering from "./pages/courses/PromptEngineering";
 import FinancialPlanning from "./pages/courses/FinancialPlanning";
 import HumanResource from "./pages/courses/HumanResource";
+import PowerApps from "./pages/courses/PowerApps";
 import InternshipPage from "./pages/InternshipPage";
 
 export default function App() {
@@ -135,6 +136,7 @@ export default function App() {
         <Route path="/course/prompt-engineering" element={<PromptEngineering />} />
         <Route path="/course/financial-planning" element={<FinancialPlanning />} />
         <Route path="/course/human-resource" element={<HumanResource />} />
+        <Route path="/course/power-apps" element={<PowerApps />} />
 
         {/* Login */}
         <Route path="/login" element={<Login onLogin={handleLogin} />} />

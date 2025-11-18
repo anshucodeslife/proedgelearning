@@ -1035,8 +1035,17 @@ const InternshipPage = () => {
               Why Choose ProEdge Learning?
             </h2>
             <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-              Join thousands of students who have transformed their careers with
-              us
+               <div className="mt-3 text-2xl font-bold text-white font-['PT Sans']">
+              Because{" "}
+              <span className="text-[#fca532]">we don’t just teach</span> — we
+              transform
+            </div>
+
+            <div className="mt-1 font-bold font-['PT Sans'] text-2xl">
+              <span className="text-[#fca532]">At ProEdge</span>, every skill
+              you learn is designed to move you closer to your
+              <span className="text-[#fca532]"> career goals.</span>
+            </div>
             </p>
           </div>
 

@@ -197,6 +197,18 @@ export default function Footer() {
           >
             Power Automate
           </Link>
+             <Link
+            to="/course/power-platform"
+            className="block mb-3 hover:text-[#fca532] transition-colors"
+          >
+            Power Platform
+          </Link>
+          <Link
+            to="/course/power-apps"
+            className="block mb-3 hover:text-[#fca532] transition-colors"
+          >
+            Power Apps
+          </Link>
         </div>
       </div>
 
